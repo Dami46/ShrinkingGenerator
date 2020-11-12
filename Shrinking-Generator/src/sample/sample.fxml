@@ -28,7 +28,7 @@
             <Font size="19.0" />
          </font>
       </Text>
-      <Button fx:id="generateFileButton" layoutX="328.0" layoutY="475.0" mnemonicParsing="false" onKeyPressed="#onGenerationAction" prefHeight="53.0" prefWidth="144.0" text="Generate to file">
+      <Button fx:id="generateFileButton" layoutX="328.0" layoutY="475.0" mnemonicParsing="false" onAction="#onGenerationAction" onKeyPressed="#onGenerationAction" prefHeight="53.0" prefWidth="144.0" text="Generate to file">
          <font>
             <Font size="16.0" />
          </font>

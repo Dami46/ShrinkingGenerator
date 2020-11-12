@@ -14,9 +14,9 @@ public class LFSR {
         String LFSRSSeed = RandomClass.generateSample(22);
         LFSR lfsrA = new LFSR(LFSRASeed, 21);
         LFSR lfsrS = new LFSR(LFSRSSeed, 22);
-        Controller.generationRun(lfsrA,lfsrS);
+        Controller.generationRunTest(lfsrA,lfsrS);
         while (Controller.outputString.length() < 1000000) {
-            Controller.generationRun(lfsrA,lfsrS);
+            Controller.generationRunTest(lfsrA,lfsrS);
           //  System.out.println("Wynik generacji: " + Controller.outputString);
            // System.out.println(Controller.outputString.length());
         }
