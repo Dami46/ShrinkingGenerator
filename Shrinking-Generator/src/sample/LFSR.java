@@ -14,25 +14,14 @@ public class LFSR {
         String LFSRSSeed = RandomClass.generateSample(22);
         LFSR lfsrA = new LFSR(LFSRASeed, 21);
         LFSR lfsrS = new LFSR(LFSRSSeed, 22);
-        Controller.generationRunTest(lfsrA,lfsrS);
+        Controller.generationRunTest(lfsrA, lfsrS);
         while (Controller.outputString.length() < 1000000) {
-            Controller.generationRunTest(lfsrA,lfsrS);
-          //  System.out.println("Wynik generacji: " + Controller.outputString);
-           // System.out.println(Controller.outputString.length());
+            Controller.generationRunTest(lfsrA, lfsrS);
         }
-        if(Controller.outputString.length() != 1000000) {
-            Controller.outputString = Controller.outputString.substring(0,1000000);
+        if (Controller.outputString.length() != 1000000) {
+            Controller.outputString = Controller.outputString.substring(0, 1000000);
         }
         System.out.println(Controller.outputString);
-        //System.out.println(Controller.outputString);
-
-     /*   String seed = RandomClass.generateSample(20);
-        System.out.println("Seed " + seed);
-        LFSR lfsr = new LFSR(seed, 20);
-        for (int i = 0; i < 10; i++) {
-            int bit = lfsr.step();
-            System.out.println(lfsr + " " + bit);
-        }*/
     }
 
     public LFSR(String seed, int tap) {
@@ -50,8 +39,7 @@ public class LFSR {
 
     public int step() {
         boolean newBit = false;
-      //  System.out.println("Size XORTable " + xorTable.xorMap.get(tap).size());
-        for(int i=0; i<xorTable.xorMap.get(tap).size();i++) {
+        for (int i = 0; i < xorTable.xorMap.get(tap).size(); i++) {
             newBit = lfsr[0] ^ lfsr[xorTable.xorMap.get(tap).get(i)];
         }
 

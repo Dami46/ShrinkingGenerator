@@ -63,41 +63,24 @@ public class Controller implements Initializable {
         while (outputString.length() < Integer.parseInt(stringLength.getText())) {
             generationRun(lfsrA, lfsrS);
         }
-        System.out.println("Output sTRING1: " + outputString);
         if (outputString.length() != Integer.parseInt(stringLength.getText())) {
             outputString = outputString.substring(0, Integer.parseInt(stringLength.getText()));
         }
-        System.out.println("Output sTRING po substring: " + outputString);
     }
 
     public String generationRun(LFSR lfsrA, LFSR lfsrS) {
         String generationResult = "";
         int bitA;
         int bitS;
-        // System.out.println("Seed A " + LFSRASeed);
-        // System.out.println("Seed S " + LFSRSSeed);
         for (int i = 0; i < Integer.parseInt(stringLength.getText()); i++) {
             bitA = lfsrA.step();
             LFSRAResult.add(bitA);
             bitS = lfsrS.step();
             LFSRSResult.add(bitS);
-            // System.out.println(lfsrA + " " + bitA);
-            //  System.out.println(lfsrS + " " + bitS);
         }
-   /*     System.out.println("LFSRA: ");
-        for (Integer a : LFSRAResult) {
-            System.out.print(a + " ");
-        }
-        System.out.println(" ");
-        System.out.println("LFSRS: ");
-        for (Integer a : LFSRSResult) {
-            System.out.print(a + " ");
-        }
-        System.out.println(" ");*/
         for (; iterator < LFSRAResult.size(); iterator++) {
             if (LFSRSResult.get(iterator) == 1) {
                 int result = LFSRAResult.get(iterator);
-                //System.out.print(result + " ");
                 generationResult = generationResult + result;
             }
         }
@@ -110,30 +93,15 @@ public class Controller implements Initializable {
         String generationResult = "";
         int bitA;
         int bitS;
-        // System.out.println("Seed A " + LFSRASeed);
-        // System.out.println("Seed S " + LFSRSSeed);
         for (int i = 0; i < 1000000; i++) {
             bitA = lfsrA.step();
             LFSRAResult.add(bitA);
             bitS = lfsrS.step();
             LFSRSResult.add(bitS);
-            // System.out.println(lfsrA + " " + bitA);
-            //  System.out.println(lfsrS + " " + bitS);
         }
-   /*     System.out.println("LFSRA: ");
-        for (Integer a : LFSRAResult) {
-            System.out.print(a + " ");
-        }
-        System.out.println(" ");
-        System.out.println("LFSRS: ");
-        for (Integer a : LFSRSResult) {
-            System.out.print(a + " ");
-        }
-        System.out.println(" ");*/
         for (; iterator < LFSRAResult.size(); iterator++) {
             if (LFSRSResult.get(iterator) == 1) {
                 int result = LFSRAResult.get(iterator);
-                //System.out.print(result + " ");
                 generationResult = generationResult + result;
             }
         }
