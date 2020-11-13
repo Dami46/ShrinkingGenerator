@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <Button fx:id="aboutButton" layoutX="664.0" layoutY="25.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="111.0" text="About">
+        <Button fx:id="aboutButton" layoutX="664.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleAboutClick" prefHeight="43.0" prefWidth="111.0" text="About">
             <font>
                 <Font size="24.0" />
             </font>

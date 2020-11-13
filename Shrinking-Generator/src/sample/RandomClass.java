@@ -1,7 +1,6 @@
 package sample;
 
-import java.text.MessageFormat;
-import java.util.*;
+import java.util.Random;
 
 class RandomClass {
 
