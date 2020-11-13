@@ -8,9 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.*;
 import java.math.BigInteger;
 import java.net.URL;
 import java.sql.SQLOutput;
@@ -35,6 +40,11 @@ public class Controller implements Initializable {
     Button pathButton;
     @FXML
     Button generateFileButton;
+    @FXML
+    AnchorPane mainPane;
+    @FXML
+    TextField pathField;
+
 
     public static String outputString = "";
     public static int iterator = 0;
@@ -52,20 +62,35 @@ public class Controller implements Initializable {
             LFSRALength.setText("21");
             LFSRSLength.setText("22");
         }
-        String LFSRASeed = RandomClass.generateSample(Integer.parseInt(LFSRALength.getText()));
-        String LFSRSSeed = RandomClass.generateSample(Integer.parseInt(LFSRSLength.getText()));
+        try {
+            String LFSRASeed = RandomClass.generateSample(Integer.parseInt(LFSRALength.getText()));
+            String LFSRSSeed = RandomClass.generateSample(Integer.parseInt(LFSRSLength.getText()));
 
-        LFSR lfsrA = new LFSR(LFSRASeed, Integer.parseInt(LFSRALength.getText()));
-        LFSR lfsrS = new LFSR(LFSRSSeed, Integer.parseInt(LFSRSLength.getText()));
+            LFSR lfsrA = new LFSR(LFSRASeed, Integer.parseInt(LFSRALength.getText()));
+            LFSR lfsrS = new LFSR(LFSRSSeed, Integer.parseInt(LFSRSLength.getText()));
 
-        generationRun(lfsrA, lfsrS);
-
-        while (outputString.length() < Integer.parseInt(stringLength.getText())) {
             generationRun(lfsrA, lfsrS);
+
+            while (outputString.length() < Integer.parseInt(stringLength.getText())) {
+                generationRun(lfsrA, lfsrS);
+            }
+            if (outputString.length() != Integer.parseInt(stringLength.getText())) {
+                outputString = outputString.substring(0, Integer.parseInt(stringLength.getText()));
+            }
+            if (outputString.length() == Integer.parseInt(stringLength.getText()) ) {
+                if( pathField.getText() != null) {
+                    saveToFile();
+                } else {
+                    System.out.println("Brak podanej ściezki!");
+                    pathField.setText("D:\\Program Files (x86)\\Projekty\\Shrinking-Generator-master\\result.txt");
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Brak danych!");
         }
-        if (outputString.length() != Integer.parseInt(stringLength.getText())) {
-            outputString = outputString.substring(0, Integer.parseInt(stringLength.getText()));
-        }
+
+        System.out.println("Output " + outputString);
+
     }
 
     public String generationRun(LFSR lfsrA, LFSR lfsrS) {
@@ -108,6 +133,40 @@ public class Controller implements Initializable {
         outputString = outputString + generationResult;
 
         return outputString;
+    }
+
+    private void saveToFile() {
+        if (outputString != null) {
+            String path = pathField.getText();
+            try {
+                File file = new File(path);
+                Desktop desktop = Desktop.getDesktop();
+                desktop.open(file);
+                try (PrintWriter outstream = new PrintWriter(path)) {
+                    outstream.print(outputString);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    public void choosePath() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Path");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+
+        Stage stage = (Stage) mainPane.getScene().getWindow();
+        File selectedDirectory = fileChooser.showOpenDialog(stage);
+
+        if (selectedDirectory == null) {
+            System.out.println("No path selected");
+        } else {
+            pathField.setText(selectedDirectory.getAbsolutePath());
+        }
     }
 
 }
