@@ -14,11 +14,11 @@ class RandomClass {
             sample = sample + generatedValue;
         }
 
-        if (!sample.contains("0")) {
+        if (!sample.contains("0") && sample.length() > 2) {
             sample = sample.substring(0, sample.length() - 1);
             sample = sample + "0";
         }
-        if(!sample.contains("1")) {
+        if(!sample.contains("1") && sample.length() > 2) {
             sample = sample.substring(0, sample.length() - 1);
             sample = sample + "1";
         }

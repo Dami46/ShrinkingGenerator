@@ -164,7 +164,7 @@ public class Controller implements Initializable {
         File selectedDirectory = fileChooser.showOpenDialog(stage);
 
         if (selectedDirectory == null) {
-            System.out.println("No path selected");
+            System.out.println("");
         } else {
             pathField.setText(selectedDirectory.getAbsolutePath());
         }
