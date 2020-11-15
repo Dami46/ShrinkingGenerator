@@ -82,15 +82,11 @@ public class Controller implements Initializable {
                 if (pathField.getText() != null) {
                     saveToFile();
                 } else {
-                    System.out.println("Brak podanej ściezki!");
-                    pathField.setText("D:\\Program Files (x86)\\Projekty\\Shrinking-Generator-master\\result.txt");
+                    pathField.setText("Results/wynik.txt");
                 }
             }
         } catch (NumberFormatException e) {
-            System.out.println("Brak danych!");
         }
-
-        System.out.println("Output " + outputString);
 
     }
 
@@ -158,6 +154,10 @@ public class Controller implements Initializable {
     public void choosePath() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Path");
+        String userDirectoryString = System.getProperty("user.dir");
+        File userDirectory = new File(userDirectoryString);
+        fileChooser.setInitialDirectory(userDirectory);
+
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
 
         Stage stage = (Stage) mainPane.getScene().getWindow();
