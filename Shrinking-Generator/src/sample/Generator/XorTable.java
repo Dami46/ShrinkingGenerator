@@ -1,4 +1,4 @@
-package sample;
+package sample.Generator;
 
 import java.util.Arrays;
 import java.util.HashMap;

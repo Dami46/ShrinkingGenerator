@@ -1,69 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-    <children>
-        <Button fx:id="aboutButton" layoutX="664.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleAboutClick" prefHeight="43.0" prefWidth="111.0" text="About">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Button>
-        <Text layoutX="166.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shrinking Generator" wrappingWidth="468.2096176147461">
-            <font>
-                <Font size="51.0" />
-            </font>
-        </Text>
-        <TextField fx:id="stringLength" layoutX="94.0" layoutY="189.0" prefHeight="43.0" prefWidth="547.0" promptText="Write here length of string to generate">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </TextField>
-        <Text layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Length:" wrappingWidth="69.7190170288086">
-            <font>
-                <Font size="19.0" />
-            </font>
-        </Text>
-        <Button fx:id="generateFileButton" layoutX="328.0" layoutY="475.0" mnemonicParsing="false" onAction="#onGenerationAction" onKeyPressed="#onGenerationAction" prefHeight="53.0" prefWidth="144.0" text="Generate to file">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Button>
-        <Button fx:id="pathButton" layoutX="654.0" layoutY="393.0" mnemonicParsing="false" onAction="#choosePath" prefHeight="34.0" prefWidth="130.0" text="Path">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Button>
-        <TextField fx:id="pathField" layoutX="94.0" layoutY="391.0" prefHeight="43.0" prefWidth="547.0" promptText="Choose a path for file">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </TextField>
-        <Text layoutX="24.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path:" wrappingWidth="69.7190170288086">
-            <font>
-                <Font size="19.0" />
-            </font>
-        </Text>
-        <TextField fx:id="LFSRALength" layoutX="162.0" layoutY="309.0" prefHeight="28.0" prefWidth="158.0" promptText="np 21" />
-        <TextField fx:id="LFSRSLength" layoutX="481.0" layoutY="309.0" prefHeight="28.0" prefWidth="158.0" promptText="np 22" />
-        <Text layoutX="359.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LFSR-S Length:" wrappingWidth="122.3618850708009">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Text>
-        <Text layoutX="25.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LFSR-A Length:" wrappingWidth="136.75475093180194">
-            <font>
-                <Font size="17.0" />
-            </font>
-        </Text>
-        <Text layoutX="79.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The length of the registers should be relatively prime !!! (min 20, max 28)" wrappingWidth="642.0964851379395">
-            <font>
-                <Font size="19.0" />
-            </font>
-        </Text>
-    </children>
-</AnchorPane>
+<Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" styleClass="background" stylesheets="@css/Main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="680.0" prefWidth="1080.0" styleClass="backgroundImage" stylesheets="@css/Main.css" />
+      <Button fx:id="encryptButton" layoutX="84.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleEncryptionClick" prefHeight="250.0" prefWidth="250.0" stylesheets="@css/Main.css" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="decryptButton" contentDisplay="TOP" layoutX="751.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleDecryptionClick" prefHeight="250.0" prefWidth="250.0" stylesheets="@css/Main.css" textAlignment="CENTER">
+         <font>
+            <Font size="52.0" />
+         </font>
+      </Button>
+      <Button fx:id="aboutButton" contentDisplay="BOTTOM" layoutX="84.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleAboutClick" prefHeight="250.0" prefWidth="250.0" stylesheets="@css/Main.css" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="generatorButton" layoutX="751.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleGeneratorClick" prefHeight="250.0" prefWidth="250.0" stylesheets="@css/Main.css" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Text disable="true" fill="WHITE" layoutX="163.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" wrappingWidth="91.63920593261719">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Text>
+      <Text disable="true" fill="WHITE" layoutX="796.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decryption" wrappingWidth="160.4694061279297">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Text>
+      <Text disable="true" fill="WHITE" layoutX="129.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encryption" wrappingWidth="160.4694061279297">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Text>
+      <Text disable="true" fill="WHITE" layoutX="803.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generator" wrappingWidth="150.0">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Text>
+      <ImageView disable="true" fitHeight="115.0" fitWidth="150.0" layoutX="152.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@css/info@3x.png" />
+         </image>
+      </ImageView>
+      <ImageView disable="true" fitHeight="123.0" fitWidth="126.0" layoutX="815.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@css/725259.png" />
+         </image>
+      </ImageView>
+      <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" layoutX="134.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@css/lock-icon-11.png" />
+         </image>
+      </ImageView>
+      <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" layoutX="802.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@css/hiclipart.com.png" />
+         </image>
+      </ImageView>
+      <Text disable="true" fill="WHITE" layoutX="387.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Playfair Cypher" textAlignment="CENTER" wrappingWidth="305.37510681152344">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

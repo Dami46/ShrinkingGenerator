@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Generator.GeneratorController">
+    <children>
+        <Button fx:id="aboutButton" layoutX="638.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleAboutClick" prefHeight="52.0" prefWidth="137.0" stylesheets="@../css/Main.css" text="About">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Text layoutX="166.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shrinking Generator" wrappingWidth="468.2096176147461">
+            <font>
+                <Font size="51.0" />
+            </font>
+        </Text>
+        <TextField fx:id="stringLength" layoutX="94.0" layoutY="189.0" prefHeight="43.0" prefWidth="547.0" promptText="Write here length of string to generate">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <Text layoutX="24.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Length:" wrappingWidth="69.7190170288086">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Text>
+        <Button fx:id="generateFileButton" layoutX="144.0" layoutY="494.0" mnemonicParsing="false" onAction="#onGenerationAction" onKeyPressed="#onGenerationAction" prefHeight="53.0" prefWidth="275.0" stylesheets="@../css/Main.css" text="Generate to file">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="pathButton" layoutX="656.0" layoutY="387.0" mnemonicParsing="false" onAction="#choosePath" prefHeight="34.0" prefWidth="130.0" stylesheets="@../css/Main.css" text="Path">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <TextField fx:id="pathField" layoutX="94.0" layoutY="391.0" prefHeight="43.0" prefWidth="547.0" promptText="Choose a path for file">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <Text layoutX="24.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path:" wrappingWidth="69.7190170288086">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Text>
+        <TextField fx:id="LFSRALength" layoutX="162.0" layoutY="309.0" prefHeight="28.0" prefWidth="158.0" promptText="np 21" />
+        <TextField fx:id="LFSRSLength" layoutX="481.0" layoutY="309.0" prefHeight="28.0" prefWidth="158.0" promptText="np 22" />
+        <Text layoutX="359.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LFSR-S Length:" wrappingWidth="122.3618850708009">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <Text layoutX="25.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LFSR-A Length:" wrappingWidth="136.75475093180194">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Text>
+        <Text layoutX="79.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The length of the registers should be relatively prime !!! (min 20, max 28)" wrappingWidth="642.0964851379395">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Text>
+        <Button fx:id="backButon" layoutX="488.0" layoutY="494.0" mnemonicParsing="false" onAction="#loadMainStage" prefHeight="53.0" prefWidth="144.0" stylesheets="@../css/Main.css" text="Back" textAlignment="CENTER">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
