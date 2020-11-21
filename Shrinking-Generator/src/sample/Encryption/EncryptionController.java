@@ -36,17 +36,15 @@ public class EncryptionController {
 
     @FXML
     private void encryption() {
-        if (!yourTextArea.getText().equals("")) {
+        if (!yourTextArea.getText().equals("") ) {
             StringBuilder binaryText = textToBin();
             String binaryTextString = binaryText.toString();
             GeneratorController generatorController = new GeneratorController();
-
-            if (GeneratorController.outputString.equals("")) {
+            if (GeneratorController.outputString.equals("") || binaryTextString.length() > GeneratorController.outputString.length()) {
                 generatedBinary = generatorController.forEncryptionGenerate(binaryTextString.length());
             } else {
                 generatedBinary = GeneratorController.outputString;
             }
-
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < binaryTextString.length(); i++) {
                 sb.append(binaryTextString.charAt(i) ^ generatedBinary.charAt(i));
