@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.Generator.GeneratorController;
@@ -13,44 +12,66 @@ import sample.Main;
 
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EncryptionController {
+
     @FXML
     private Pane encryptionPane;
     @FXML
-    public  TextArea encryptedTextArea;
+    public TextArea encryptedTextArea;
     @FXML
     public TextArea yourTextArea;
-    @FXML
-    private TextField keyArea;
 
     private static String encryptedText;
-
+    public static String generatedBinary = "";
+    public static String xorResult;
 
     @FXML
     private void encryption() {
-        String key = keyArea.getText();
+        if (!yourTextArea.getText().equals("")) {
+            StringBuilder binaryText = textToBin();
+            String binaryTextString = binaryText.toString();
+            GeneratorController generatorController = new GeneratorController();
+
+            if (GeneratorController.outputString.equals("")) {
+                generatedBinary = generatorController.forEncryptionGenerate(binaryTextString.length());
+            } else {
+                generatedBinary = GeneratorController.outputString;
+            }
+
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < binaryTextString.length(); i++) {
+                sb.append(binaryTextString.charAt(i) ^ generatedBinary.charAt(i));
+            }
+            xorResult = sb.toString();
+            String result = binaryToText(xorResult);
+
+            encryptedText = result;
+            encryptedTextArea.setText(result);
+        }
 
     }
+
     @FXML
     private void clearTextArea() {
         yourTextArea.clear();
     }
+
     @FXML
     private void saveToFile() {
-        if(encryptedTextArea != null) {
+        if (encryptedTextArea != null) {
             String encryptedText = encryptedTextArea.getText();
             String path = "D:\\Program Files (x86)\\Projekty\\Shrinking-Generator-master\\Shrinking-Generator\\src\\sample\\Encryption";
             try {
-                File file = new File (path);
+                File file = new File(path);
                 Desktop desktop = Desktop.getDesktop();
                 desktop.open(file);
                 try (PrintWriter outstream = new PrintWriter("result.txt")) {
@@ -66,7 +87,7 @@ public class EncryptionController {
 
     @FXML
     private void loadFromFile() throws IOException {
-        String path ="D:\\Program Files (x86)\\Projekty\\Shrinking-Generator-master\\Shrinking-Generator\\src\\sample\\Encryption\\text.txt";
+        String path = "D:\\Program Files (x86)\\Projekty\\Shrinking-Generator-master\\Shrinking-Generator\\src\\sample\\Encryption\\text.txt";
         String content = String.valueOf(Files.readAllLines(Paths.get(path)));
         yourTextArea.setText(content);
     }
@@ -75,6 +96,7 @@ public class EncryptionController {
     private void loadMainStage() {
         loadMainScene();
     }
+
     private void loadMainScene() {
         try {
             Parent mainView = (Pane) FXMLLoader.load(getClass().getResource("../sample.fxml"));
@@ -93,7 +115,7 @@ public class EncryptionController {
         }
     }
 
-    public  TextArea getEncryptedTextArea() {
+    public TextArea getEncryptedTextArea() {
         return encryptedTextArea;
     }
 
@@ -105,4 +127,29 @@ public class EncryptionController {
         this.encryptedText = encryptedText;
     }
 
+    public StringBuilder textToBin() {
+        Charset UTF_8 = StandardCharsets.UTF_8;
+        String text = yourTextArea.getText();
+        byte[] bytes = text.getBytes(UTF_8);
+        StringBuilder binary = new StringBuilder();
+        for (byte b : bytes) {
+            int val = b;
+            for (int i = 0; i < 8; i++) {
+                binary.append((val & 128) == 0 ? 0 : 1);
+                val <<= 1;
+            }
+        }
+        return binary;
+    }
+
+    public static String binaryToText(String binary) {
+        return Arrays.stream(binary.split("(?<=\\G.{8})"))/* regex to split the bits array by 8*/
+                .parallel()
+                .map(eightBits -> (char) Integer.parseInt(eightBits, 2))
+                .collect(
+                        StringBuilder::new,
+                        StringBuilder::append,
+                        StringBuilder::append
+                ).toString();
+    }
 }

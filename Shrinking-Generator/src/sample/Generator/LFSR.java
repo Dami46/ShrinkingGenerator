@@ -26,13 +26,11 @@ public class LFSR {
             tmpXorResult = lfsr[xorTable.xorMap.get(tap).get(i)]^ lfsr[xorTable.xorMap.get(tap).get(i+1)];
         }
         newBit = lfsr[0] ^ tmpXorResult;
-       // System.out.println("Wynik po xor " + newBit);
 
         for (int i = 0; i < lfsr.length - 1; i++) {
             lfsr[i] = lfsr[i + 1];
         }
         lfsr[lfsr.length - 1] = newBit;
-        //System.out.println("Wynik po xor " + newBit);
 
         return !newBit ? 0 : 1;
     }

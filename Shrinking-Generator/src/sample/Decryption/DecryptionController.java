@@ -19,6 +19,8 @@ import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static sample.Encryption.EncryptionController.*;
+
 public class DecryptionController {
 
     @FXML
@@ -60,11 +62,12 @@ public class DecryptionController {
 
     @FXML
     private void decryption() {
-        String textToDecryption = encryptedTextArea.getText();
-        String decryptedText = "";
-
-
-        decryptedTextArea.setText(decryptedText);
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < xorResult.length(); i++) {
+            sb.append(xorResult.charAt(i)^generatedBinary.charAt(i));
+        }
+        String result = binaryToText(sb.toString());
+        decryptedTextArea.setText(result);
     }
 
     public void loadMainScene() {

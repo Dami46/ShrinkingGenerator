@@ -1,4 +1,4 @@
-package sample.About;
+package sample.Generator.About;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +25,7 @@ public class AboutController {
 
     public  void loadMainScene() {
         try {
-            Parent mainView = (Pane) FXMLLoader.load(getClass().getResource("../Generator/generator.fxml"));
+            Parent mainView = (Pane) FXMLLoader.load(getClass().getResource("../generator.fxml"));
 
             Scene mainScene = new Scene(mainView);
 

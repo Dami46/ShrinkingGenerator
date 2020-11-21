@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +53,7 @@ public class GeneratorController implements Initializable {
     public static int iterator = 0;
     public static ArrayList<Integer> LFSRAResult = new ArrayList<>();
     public static ArrayList<Integer> LFSRSResult = new ArrayList<>();
+    private  Integer textLength = 1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -91,7 +93,26 @@ public class GeneratorController implements Initializable {
 
     }
 
-    public String generationRun(LFSR lfsrA, LFSR lfsrS) {
+    public String forEncryptionGenerate (Integer textLength) {
+        xorTable.implementXorMap();
+        int random = (int)(Math.random() * 8 + 20);
+        int random2 = (int)(Math.random() * 8 + 20);
+        String LFSRASeed = RandomClass.generateSample(random);
+        String LFSRSSeed = RandomClass.generateSample(random2);
+        LFSR lfsrA = new LFSR(LFSRASeed, random);
+        LFSR lfsrS = new LFSR(LFSRSSeed, random2);
+        this.textLength = textLength;
+        generationRunToEncryption(lfsrA,lfsrS);
+        while (outputString.length() < textLength) {
+            generationRunToEncryption(lfsrA,lfsrS);
+        }
+        if(outputString.length() != textLength) {
+            outputString = outputString.substring(0,textLength);
+        }
+        return outputString;
+    }
+
+    public  String generationRun(LFSR lfsrA, LFSR lfsrS) {
         String generationResult = "";
         int bitA;
         int bitS;
@@ -109,6 +130,25 @@ public class GeneratorController implements Initializable {
         }
         outputString = outputString + generationResult;
 
+        return outputString;
+    }
+    public  String generationRunToEncryption(LFSR lfsrA, LFSR lfsrS) {
+        String generationResult = "";
+        int bitA;
+        int bitS;
+        for (int i = 0; i < textLength; i++) {
+            bitA = lfsrA.step();
+            LFSRAResult.add(bitA);
+            bitS = lfsrS.step();
+            LFSRSResult.add(bitS);
+        }
+        for (; iterator < LFSRAResult.size(); iterator++) {
+            if (LFSRSResult.get(iterator) == 1) {
+                int result = LFSRAResult.get(iterator);
+                generationResult = generationResult + result;
+            }
+        }
+        outputString = outputString + generationResult;
         return outputString;
     }
 
