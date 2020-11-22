@@ -67,13 +67,14 @@ public class EncryptionController {
     private void saveToFile() {
         if (encryptedTextArea != null) {
             String encryptedText = encryptedTextArea.getText();
-            String path = "D:\\Program Files (x86)\\Projekty\\Shrinking-Generator-master\\Shrinking-Generator\\src\\sample\\Encryption";
+            String path = "D:\\Program Files (x86)\\Projekty\\Shrinking-Generator-master";
             try {
                 File file = new File(path);
                 Desktop desktop = Desktop.getDesktop();
                 desktop.open(file);
                 try (PrintWriter outstream = new PrintWriter("result.txt")) {
                     outstream.println(encryptedText + "\n");
+                    outstream.println("Wygenerowany ciąg: " + generatedBinary + "\n");
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

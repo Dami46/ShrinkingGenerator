@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.Generator.GeneratorController;
@@ -29,6 +30,8 @@ public class DecryptionController {
     public  TextArea encryptedTextArea;
     @FXML
     private TextArea decryptedTextArea;
+    @FXML
+    private TextField keyTextField;
 
 
     @FXML
@@ -62,6 +65,9 @@ public class DecryptionController {
 
     @FXML
     private void decryption() {
+        if(!keyTextField.getText().equals("")) {
+            generatedBinary = keyTextField.getText();
+        }
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < xorResult.length(); i++) {
             sb.append(xorResult.charAt(i)^generatedBinary.charAt(i));
