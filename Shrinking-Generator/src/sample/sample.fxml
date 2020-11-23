@@ -71,10 +71,5 @@
             <Image url="@css/hiclipart.com.png" />
          </image>
       </ImageView>
-      <Text disable="true" fill="WHITE" layoutX="387.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Playfair Cypher" textAlignment="CENTER" wrappingWidth="305.37510681152344">
-         <font>
-            <Font size="41.0" />
-         </font>
-      </Text>
    </children>
 </Pane>

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.Generator.GeneratorController;
@@ -29,18 +30,25 @@ public class EncryptionController {
     public TextArea encryptedTextArea;
     @FXML
     public TextArea yourTextArea;
+    @FXML
+    public TextField keyTextField;
 
     private static String encryptedText;
     public static String generatedBinary = "";
     public static String xorResult;
+    private static String binaryText2;
 
     @FXML
     private void encryption() {
         if (!yourTextArea.getText().equals("") ) {
             StringBuilder binaryText = textToBin();
             String binaryTextString = binaryText.toString();
+            binaryText2 = binaryTextString;
             GeneratorController generatorController = new GeneratorController();
             if (GeneratorController.outputString.equals("") || binaryTextString.length() > GeneratorController.outputString.length()) {
+                if(keyTextField.getText().equals("")) {
+                    keyTextField.setText("Key generated cause it is too short or empty !! It should be: " + binaryTextString.length() + " length");
+                }
                 generatedBinary = generatorController.forEncryptionGenerate(binaryTextString.length());
             } else {
                 generatedBinary = GeneratorController.outputString;
@@ -74,7 +82,8 @@ public class EncryptionController {
                 desktop.open(file);
                 try (PrintWriter outstream = new PrintWriter("result.txt")) {
                     outstream.println(encryptedText + "\n");
-                    outstream.println("Wygenerowany ciąg: " + generatedBinary + "\n");
+                    outstream.println("Text w postaci binarnej: " + binaryText2 + "\n");
+                    outstream.println("Wygenerowany klucz: " + generatedBinary + "\n");
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
