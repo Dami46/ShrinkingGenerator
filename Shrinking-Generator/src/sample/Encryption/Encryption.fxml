@@ -10,7 +10,10 @@
 
 <Pane fx:id="encryptionPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" styleClass="decryptionBackground" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Encryption.EncryptionController">
    <children>
-      <Button fx:id="backButon" layoutX="114.0" layoutY="587.0" mnemonicParsing="false" onAction="#loadMainStage" text="Back" textAlignment="CENTER" />
+      <Button fx:id="backButon" layoutX="114.0" layoutY="587.0" mnemonicParsing="false" onAction="#loadMainStage" text="Back" textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font></Button>
       <TextArea fx:id="encryptedTextArea" editable="false" layoutX="337.0" layoutY="409.0" prefHeight="200.0" prefWidth="673.0" promptText="Here will be your encrypted text" wrapText="true">
          <font>
             <Font size="18.0" />
@@ -18,7 +21,7 @@
       </TextArea>
       <Button fx:id="encryptButton" defaultButton="true" layoutX="40.0" layoutY="346.0" mnemonicParsing="false" onAction="#encryption" prefHeight="71.0" prefWidth="258.0" text="Encrypt">
          <font>
-            <Font size="13.0" />
+            <Font size="30.0" />
          </font>
       </Button>
       <Label layoutX="337.0" layoutY="148.0" prefHeight="35.0" prefWidth="229.0" text="Text to encrypt">
@@ -38,17 +41,17 @@
       </TextArea>
       <Button fx:id="clearButton" defaultButton="true" layoutX="40.0" layoutY="166.0" mnemonicParsing="false" onAction="#clearTextArea" prefHeight="71.0" prefWidth="258.0" text="Clear">
          <font>
-            <Font size="13.0" />
+            <Font size="30.0" />
          </font>
       </Button>
       <Button fx:id="lffbuton" defaultButton="true" layoutX="40.0" layoutY="254.0" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="71.0" prefWidth="258.0" text="Load from File">
          <font>
-            <Font size="13.0" />
+            <Font size="30.0" />
          </font>
       </Button>
       <Button fx:id="stfbutton" defaultButton="true" layoutX="40.0" layoutY="438.0" mnemonicParsing="false" onAction="#saveToFile" prefHeight="71.0" prefWidth="258.0" text="Save to File">
          <font>
-            <Font size="13.0" />
+            <Font size="30.0" />
          </font>
       </Button>
       <TextField fx:id="keyTextField" layoutX="337.0" layoutY="70.0" prefHeight="51.0" prefWidth="673.0" promptText="Write you key here">
@@ -62,7 +65,7 @@
       </Text>
       <Button fx:id="lffbuton1" defaultButton="true" layoutX="40.0" layoutY="60.0" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="71.0" prefWidth="258.0" text="Load  key">
          <font>
-            <Font size="13.0" />
+            <Font size="30.0" />
          </font>
       </Button>
    </children>

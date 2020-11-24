@@ -24,7 +24,7 @@ public class InfoController {
         loadMainScene();
     }
 
-    public void loadMainScene() {
+    private void loadMainScene() {
         try {
             Parent mainView = (Pane) FXMLLoader.load(getClass().getResource("../sample.fxml"));
 

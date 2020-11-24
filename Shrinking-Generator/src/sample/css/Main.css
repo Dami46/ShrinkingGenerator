@@ -18,7 +18,6 @@
     -fx-background-radius: 0;
     -fx-background-color: #1E90FF;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 30px;
     -fx-text-fill: #ffffff;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 
@@ -39,6 +38,7 @@
     -fx-border-style: solid;
     -fx-border-radius: 0, 0;
     -fx-border-insets: 1 1 1 1, 0;
+    -fx-font-size: 26px;
 }
 
 .button:disabled, .button:default:disabled {

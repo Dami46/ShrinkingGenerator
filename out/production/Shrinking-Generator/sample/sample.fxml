@@ -10,7 +10,7 @@
 
 <Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" styleClass="background" stylesheets="@css/Main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <VBox layoutX="10.0" layoutY="10.0" prefHeight="680.0" prefWidth="1080.0" styleClass="backgroundImage" stylesheets="@css/Main.css" />
+      <VBox prefHeight="680.0" prefWidth="1080.0" styleClass="backgroundImage" stylesheets="@css/Main.css" />
       <Button fx:id="encryptButton" layoutX="84.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleEncryptionClick" prefHeight="250.0" prefWidth="250.0" stylesheets="@css/Main.css" textAlignment="CENTER">
          <font>
             <Font size="25.0" />
@@ -27,6 +27,11 @@
          </font>
       </Button>
       <Button fx:id="generatorButton" layoutX="751.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleGeneratorClick" prefHeight="250.0" prefWidth="250.0" stylesheets="@css/Main.css" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="TestButton" contentDisplay="BOTTOM" layoutX="415.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleTestClick" prefHeight="250.0" prefWidth="250.0" stylesheets="@css/Main.css" textAlignment="CENTER">
          <font>
             <Font size="25.0" />
          </font>
@@ -51,6 +56,11 @@
             <Font size="33.0" />
          </font>
       </Text>
+      <Text disable="true" fill="WHITE" layoutX="463.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tests" textAlignment="CENTER" wrappingWidth="140.54490661621094">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
       <ImageView disable="true" fitHeight="115.0" fitWidth="150.0" layoutX="152.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@css/info@3x.png" />
@@ -71,10 +81,10 @@
             <Image url="@css/hiclipart.com.png" />
          </image>
       </ImageView>
-      <Text disable="true" fill="WHITE" layoutX="387.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Playfair Cypher" textAlignment="CENTER" wrappingWidth="305.37510681152344">
-         <font>
-            <Font size="41.0" />
-         </font>
-      </Text>
+      <ImageView disable="true" fitHeight="123.0" fitWidth="123.0" layoutX="472.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@css/579724-200.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

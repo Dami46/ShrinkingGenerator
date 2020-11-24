@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Shrinking Generator");
         primaryStage.setScene(new Scene(root, 1080, 680));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

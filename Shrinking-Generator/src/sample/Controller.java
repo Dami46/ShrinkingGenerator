@@ -20,8 +20,6 @@ public class Controller {
     @FXML
     private void handleDecryptionClick() {
         String placement = "Decryption/Decryption.fxml";
-      //  String textToDecryption = EncryptionController.getEncryptedText();
-        //encryptedTextArea.setText(textToDecryption);
         loadNextScene(placement);
     }
 
@@ -37,6 +35,11 @@ public class Controller {
         loadNextScene(placement);
     }
 
+    @FXML
+    private void handleTestClick() {
+        String placement = "Tests/Tests.fxml";
+        loadNextScene(placement);
+    }
 
     @FXML
     private void handleGeneratorClick() {
