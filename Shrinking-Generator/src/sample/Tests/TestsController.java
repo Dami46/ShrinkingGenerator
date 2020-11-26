@@ -61,7 +61,7 @@ public class TestsController {
         } catch (NullPointerException e) {
 
         }
-
+        Tests tests = new Tests();
     }
 
     public String readFile() {
@@ -74,7 +74,7 @@ public class TestsController {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("");
             e.printStackTrace();
         }
         return data;
@@ -92,11 +92,13 @@ public class TestsController {
 
     @FXML
     private void runSeriesTest() {
-        boolean result = Tests.seriesTest();
+        Integer properZeros = Tests.seriesTest("0+");
+        Integer properOnes = Tests.seriesTest("1+");
+        boolean result = Tests.seriesTestBool(properZeros, properOnes);
         if(result) {
-            seriesTest.setText("Test passed! " + "The amount of 1 is " + Tests.onesCounter);
+            seriesTest.setText("Test passed! " + "Amount of 0 in range = " + properZeros + " and amount of 1 in range = " +  properOnes);
         } else {
-            seriesTest.setText("Test failed! " + "The amount of 1 is " + Tests.onesCounter);
+            seriesTest.setText("Test failed! " + "Amount of 0 in range =  " + properZeros + " and amount of 1 in range = " +  properOnes);
         }
 
     }
@@ -114,11 +116,12 @@ public class TestsController {
 
     @FXML
     private void runPokerTest() {
-        boolean result = Tests.pokerTest();
+        double pokerResult = Tests.pokerTest();
+        boolean result = Tests.pokerTestBool(pokerResult);
         if(result) {
-            pokerTest.setText("Test passed! " + "Longest string of 1 or 0 is " + Tests.repeatCounter);
+            pokerTest.setText("Test passed! " + "Poker test result is " + pokerResult);
         } else {
-            pokerTest.setText("Test failed! " + "Longest string of 1 or 0 is " + Tests.repeatCounter);
+            pokerTest.setText("Test failed! " + "Poker test result is " + pokerResult);
         }
     }
 
