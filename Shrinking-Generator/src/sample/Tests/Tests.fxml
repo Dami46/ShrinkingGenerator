@@ -6,7 +6,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="testPane" prefHeight="680" prefWidth="1080" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tests.TestsController">
    <children>
       <TextField fx:id="pathField" layoutX="259.0" layoutY="73.0" prefHeight="43.0" prefWidth="591.0">
@@ -14,7 +13,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Text layoutX="400.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tests" textAlignment="CENTER" wrappingWidth="258.4295654296875">
+      <Text layoutX="395.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tests " textAlignment="CENTER" wrappingWidth="258.4295654296875">
          <font>
             <Font size="35.0" />
          </font>
@@ -99,5 +98,10 @@
             <Font size="30.0" />
          </font>
       </Button>
+      <Text layoutX="735.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose 20000 length string !" textAlignment="CENTER" wrappingWidth="330.8824462890625">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

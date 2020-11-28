@@ -82,8 +82,13 @@ public class TestsController {
 
     @FXML
     private void runSingleBitsTest() {
-        boolean result = Tests.singleBitsTest();
-        if(result) {
+        boolean result = false;
+        try {
+            result = Tests.singleBitsTest();
+        } catch (NullPointerException e) {
+            System.out.println("");
+        }
+        if (result) {
             singleBitsTest.setText("Test passed! " + "The amount of 1 is " + Tests.onesCounter);
         } else {
             singleBitsTest.setText("Test failed! " + "The amount of 1 is " + Tests.onesCounter);
@@ -92,21 +97,34 @@ public class TestsController {
 
     @FXML
     private void runSeriesTest() {
-        Integer properZeros = Tests.seriesTest("0+");
-        Integer properOnes = Tests.seriesTest("1+");
-        boolean result = Tests.seriesTestBool(properZeros, properOnes);
-        if(result) {
-            seriesTest.setText("Test passed! " + "Amount of 0 in range = " + properZeros + " and amount of 1 in range = " +  properOnes);
+        boolean result = false;
+        Integer properZeros = 0;
+        Integer properOnes = 0;
+        try {
+            properZeros = Tests.seriesTest("0+");
+            properOnes = Tests.seriesTest("1+");
+            result = Tests.seriesTestBool(properZeros, properOnes);
+        } catch (NullPointerException e) {
+            System.out.println("");
+        }
+
+        if (result) {
+            seriesTest.setText("Test passed! " + "Amount of 0 in range = " + properZeros + " and amount of 1 in range = " + properOnes);
         } else {
-            seriesTest.setText("Test failed! " + "Amount of 0 in range =  " + properZeros + " and amount of 1 in range = " +  properOnes);
+            seriesTest.setText("Test failed! " + "Amount of 0 in range =  " + properZeros + " and amount of 1 in range = " + properOnes);
         }
 
     }
 
     @FXML
     private void runLongSeriesTest() {
-        boolean result = Tests.longSeriesTest();
-        if(result) {
+        boolean result = false;
+        try {
+            result = Tests.longSeriesTest();
+        } catch (NullPointerException e) {
+            System.out.println("");
+        }
+        if (result) {
             longSeriesTest.setText("Test passed! " + "Longest string of 1 or 0 is " + Tests.repeatCounter);
         } else {
             longSeriesTest.setText("Test failed! " + "Longest string of 1 or 0 is " + Tests.repeatCounter);
@@ -116,9 +134,15 @@ public class TestsController {
 
     @FXML
     private void runPokerTest() {
-        double pokerResult = Tests.pokerTest();
-        boolean result = Tests.pokerTestBool(pokerResult);
-        if(result) {
+        double pokerResult = 0.0;
+        boolean result = false;
+        try {
+            pokerResult = Tests.pokerTest();
+            result = Tests.pokerTestBool(pokerResult);
+        } catch (NullPointerException e) {
+            System.out.println("");
+        }
+        if (result) {
             pokerTest.setText("Test passed! " + "Poker test result is " + pokerResult);
         } else {
             pokerTest.setText("Test failed! " + "Poker test result is " + pokerResult);
