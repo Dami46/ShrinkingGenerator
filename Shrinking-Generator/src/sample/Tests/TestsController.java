@@ -59,7 +59,6 @@ public class TestsController {
         try {
             stringToTest = readFile();
         } catch (NullPointerException e) {
-
         }
         Tests tests = new Tests();
     }
@@ -77,7 +76,7 @@ public class TestsController {
             System.out.println("");
             e.printStackTrace();
         }
-        return data;
+        return data.substring(0,20000);
     }
 
     @FXML

@@ -22,22 +22,22 @@ public class Tests {
             put(6, new Integer[]{103, 209});
         }};
         this.combinations = new LinkedHashMap<String, Integer>() {{
-            put("0000", 1);
-            put("0001", 1);
-            put("0010", 1);
-            put("0011", 1);
-            put("0100", 1);
-            put("0101", 1);
-            put("0110", 1);
-            put("0111", 1);
-            put("1000", 1);
-            put("1001", 1);
-            put("1010", 1);
-            put("1011", 1);
-            put("1100", 1);
-            put("1101", 1);
-            put("1110", 1);
-            put("1111", 1);
+            put("0000", 0);
+            put("0001", 0);
+            put("0010", 0);
+            put("0011", 0);
+            put("0100", 0);
+            put("0101", 0);
+            put("0110", 0);
+            put("0111", 0);
+            put("1000", 0);
+            put("1001", 0);
+            put("1010", 0);
+            put("1011", 0);
+            put("1100", 0);
+            put("1101", 0);
+            put("1110", 0);
+            put("1111", 0);
         }};
     }
 
@@ -122,7 +122,7 @@ public class Tests {
     }
 
     public static double pokerTest() {
-        for (int i = 0; i < TestsController.stringToTest.length() - 4; i += 4) {
+        for (int i = 0; i < TestsController.stringToTest.length() - 3; i += 4) {
             StringBuilder tmp = new StringBuilder();
             for (int j = 0; j < 4; j++) {
                 tmp.append(TestsController.stringToTest.charAt(i + j));
