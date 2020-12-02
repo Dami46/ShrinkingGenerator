@@ -40,6 +40,7 @@ public class TestsController {
 
     @FXML
     public void choosePath() {
+        String a = "";
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose file");
         String userDirectoryString = System.getProperty("user.dir");
@@ -57,10 +58,15 @@ public class TestsController {
             pathField.setText(selectedDirectory.getAbsolutePath());
         }
         try {
-            stringToTest = readFile();
+             a  = readFile();
         } catch (NullPointerException e) {
         }
         Tests tests = new Tests();
+        if(a.length() > 20000) {
+            stringToTest = a.substring(0, 20000);
+        } else {
+            stringToTest = a;
+        }
     }
 
     public String readFile() {
@@ -76,7 +82,7 @@ public class TestsController {
             System.out.println("");
             e.printStackTrace();
         }
-        return data.substring(0,20000);
+        return data;
     }
 
     @FXML

@@ -68,17 +68,22 @@ public class Tests {
     }
 
     public static int seriesTest(String pattern) {
-        LinkedHashMap<Integer, Integer> strFreq = new LinkedHashMap<>();
-        ArrayList<String> matches = findAll(TestsController.stringToTest, pattern);
+        LinkedHashMap<Integer, Integer> strFreq = new LinkedHashMap<Integer, Integer>() {{
+            put(1,0);
+            put(2,0);
+            put(3,0);
+            put(4,0);
+            put(5,0);
+            put(6,0);
+        }};
+
+        List<String> matches = findAll(TestsController.stringToTest, pattern);
 
         for (String str : matches) {
-            int strLen = str.length();
-            if (strLen > 6) {
-                strLen = 6;
-            }
-            if (!strFreq.containsKey(strLen)) {
-                int countElem = Collections.frequency(matches, str);
-                strFreq.put(strLen, countElem);
+            if (str.length() >= 6) {
+                strFreq.replace(6,strFreq.get(6)+1);
+            } else {
+                strFreq.replace(str.length(),strFreq.get(str.length())+1);
             }
         }
 
